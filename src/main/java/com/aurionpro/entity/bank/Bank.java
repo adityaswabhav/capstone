@@ -14,7 +14,7 @@ public class Bank extends BaseEntity {
   @NotBlank @Column(nullable = false, unique = true, length = 32)
   private String code;
 
-  @NotBlank @Column(nullable = false, length = 160)
+  @NotBlank @Column(nullable = false, length = 165)
   private String name;
 
   @Email @Column(length = 255)
