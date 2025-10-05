@@ -1,0 +1,11 @@
+// File: src/main/java/com/aurionpro/dto/common/ApiResponse.java
+package com.aurionpro.dto.common;
+
+import lombok.*;
+
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+public class ApiResponse<T> {
+  private boolean success;
+  private String message;
+  private T data;
+}
