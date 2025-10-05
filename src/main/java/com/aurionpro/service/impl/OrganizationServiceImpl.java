@@ -15,7 +15,7 @@ import com.aurionpro.mapper.OrganizationMapper;
 import com.aurionpro.repository.OrgDocumentRepository;
 import com.aurionpro.repository.OrganizationRepository;
 import com.aurionpro.repository.bank.BankRepository;
-import com.aurionpro.repository.ref.RefDocumentTypeRepository;
+import com.aurionpro.repository.ref.RefDocTypeRepository;
 import com.aurionpro.service.OrganizationService;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -28,7 +28,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     private final OrganizationRepository organizationRepository;
     private final OrgDocumentRepository orgDocumentRepository;
-    private final RefDocumentTypeRepository refDocumentTypeRepository;
+    private final RefDocTypeRepository refDocumentTypeRepository;
     private final BankRepository bankRepository;
 
     @Override
