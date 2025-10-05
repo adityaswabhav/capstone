@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-
+//test
     private final AuthenticationManager authenticationManager;
     private final com.aurionpro.security.JwtTokenProvider jwtTokenProvider; // define in your security package
     private final com.aurionpro.security.CaptchaService captchaService;     // optional; implement/replace as needed
