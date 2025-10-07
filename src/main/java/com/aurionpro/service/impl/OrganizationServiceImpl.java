@@ -1,9 +1,5 @@
 package com.aurionpro.service.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.aurionpro.dto.request.OrgApprovalRequest;
 import com.aurionpro.dto.request.OrgRegistrationRequest;
 import com.aurionpro.entity.bank.Bank;
@@ -17,10 +13,12 @@ import com.aurionpro.repository.OrganizationRepository;
 import com.aurionpro.repository.bank.BankRepository;
 import com.aurionpro.repository.ref.RefDocTypeRepository;
 import com.aurionpro.service.OrganizationService;
-
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -43,8 +41,7 @@ public class OrganizationServiceImpl implements OrganizationService {
         organizationRepository.save(org);
 
         for (var d : request.getDocuments()) {
-            RefDocumentType type = refDocumentTypeRepository
-                    .findByCodeAndActiveTrue(d.getDocumentTypeCode())
+            RefDocumentType type = refDocumentTypeRepository.findByCodeAndActiveTrue(d.getDocumentTypeCode())
                     .orElseThrow(() -> new EntityNotFoundException("Unknown document type: " + d.getDocumentTypeCode()));
             OrgDocument doc = OrganizationMapper.toEntity(org, type, d);
             orgDocumentRepository.save(doc);

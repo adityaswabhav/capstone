@@ -5,21 +5,23 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import com.aurionpro.dto.request.AuthLoginRequest;
 import com.aurionpro.dto.response.TokenResponse;
 import com.aurionpro.service.AuthService;
+import com.aurionpro.service.CaptchaService;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-//test
+
     private final AuthenticationManager authenticationManager;
-    private final com.aurionpro.security.JwtTokenProvider jwtTokenProvider; // define in your security package
-    private final com.aurionpro.security.CaptchaService captchaService;     // optional; implement/replace as needed
+    private final com.aurionpro.security.JwtTokenProvider jwtTokenProvider; // TODO: provide in security config
+    private final CaptchaService captchaService;
 
     @Override
-    public TokenResponse login(com.aurionpro.dto.request.AuthLoginRequest request) {
+    public TokenResponse login(AuthLoginRequest request) {
         captchaService.verify(request.getCaptchaToken());
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
